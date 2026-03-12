@@ -1,0 +1,44 @@
+[
+  {
+    "request": {
+      "timestamp": "2026-03-12T08:40:00Z",
+      "source_ip": "192.168.10.25",
+      "method": "GET",
+      "scheme": "https",
+      "host": "demo.example.com",
+      "port": 443,
+      "path": "/api/users/123/profile",
+      "query_params": {
+        "email": "alice@example.com",
+        "session": "550e8400-e29b-41d4-a716-446655440000"
+      },
+      "headers": {
+        "User-Agent": "Mozilla/5.0",
+        "X-Forwarded-For": "203.0.113.9"
+      },
+      "body": null,
+      "protocol": "HTTP/1.1"
+    }
+  },
+  {
+    "request": {
+      "timestamp": "2026-03-12T08:41:10Z",
+      "source_ip": "10.10.10.10",
+      "method": "POST",
+      "scheme": "https",
+      "host": "demo.example.com",
+      "port": 443,
+      "path": "/search",
+      "query_params": {
+        "q": "1 OR 1=1; DROP TABLE users"
+      },
+      "headers": {
+        "User-Agent": "curl/8.6.0",
+        "Content-Type": "application/json"
+      },
+      "body": "{\"query\":\"<script>alert('x')</script>\"}",
+      "protocol": "HTTP/1.1"
+    }
+  }
+]
+

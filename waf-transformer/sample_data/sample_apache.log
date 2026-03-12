@@ -1,0 +1,4 @@
+127.0.0.1 - - [12/Mar/2026:08:41:22 +0000] "GET /api/users/123?email=alice@example.com HTTP/1.1" 200 512 "-" "Mozilla/5.0"
+203.0.113.5 - - [12/Mar/2026:08:43:10 +0000] "POST /login HTTP/1.1" 401 221 "https://example.com/login" "curl/8.6.0"
+198.51.100.9 - - [12/Mar/2026:08:49:01 +0000] "GET /product/9876543210/detail HTTP/1.1" 200 1800 "-" "python-requests/2.32.3"
+
