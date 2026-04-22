@@ -1,6 +1,6 @@
 import json
 import re
-from urllib.parse import parse_qsl
+from urllib.parse import parse_qsl, unquote_plus
 
 
 DROP_PREFIXES = [
@@ -120,7 +120,8 @@ def add_body_tokens(tokens: list[str], body: str, headers: dict) -> None:
 
 
 def suspicious_markers(raw: str) -> list[str]:
-    raw_lower = (raw or "").lower()
+    decoded = unquote_plus(raw or "")
+    raw_lower = decoded.lower()
     markers = []
 
     if " or " in raw_lower:

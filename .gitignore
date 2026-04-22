@@ -1,2 +1,5 @@
 .venv/
 apps/
+data/old_train.txt
+data/old_train2.txt
+backend/model/distilbert_waf_mlm_final

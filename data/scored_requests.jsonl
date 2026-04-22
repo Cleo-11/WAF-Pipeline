@@ -1,0 +1,1 @@
+{"timestamp": "2026-04-22T21:31:19.004417", "method": "GET", "path": "/rest/products/search", "query": "q=%3Cscript%3Ealert(1)%3C/script%3E", "serialized": "METHOD_GET PATH_/rest/products/search PARAM_q TEXT RAWTOKEN_script", "route": "PATH_/rest/products/search", "mode": "route", "score": 1.5515267848968506, "threshold": 0.616294264793396, "verdict": "SUSPICIOUS"}
