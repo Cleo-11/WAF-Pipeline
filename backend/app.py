@@ -76,6 +76,17 @@ def scan_only():
     result = scanner.score_serialized(serialized)
     return jsonify(result)
 
+@app.route("/events", methods=["GET"])
+def events():
+    if not os.path.exists(SCORE_LOG_FILE):
+        return jsonify([])
+
+    with open(SCORE_LOG_FILE, "r", encoding="utf-8") as f:
+        lines = f.readlines()[-50:]
+
+    records = [json.loads(line) for line in lines]
+    return jsonify(records)
+
 
 @app.route("/", defaults={"path": ""}, methods=["GET", "POST", "PUT", "DELETE", "PATCH"])
 @app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE", "PATCH"])

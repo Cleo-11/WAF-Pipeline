@@ -14,7 +14,7 @@ KEEP_PREFIXES = [
     "/rest/languages",
     "/profile",
     "/rest/basket",
-    "rest/chatbot",
+    "/rest/chatbot",
     "/api/Users",
     "/api/SecurityQuestions",
     "/api/SecurityAnswers",
