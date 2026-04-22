@@ -1,0 +1,461 @@
+:root {
+  color-scheme: dark;
+  --bg-primary: #0c1117;
+  --bg-secondary: #111a23;
+  --bg-tertiary: #182432;
+  --card-border: #2d3f53;
+  --text-primary: #eef4ff;
+  --text-secondary: #a6b8cf;
+  --accent: #5cc2ff;
+  --accent-soft: rgba(92, 194, 255, 0.16);
+  --danger: #ff6e6e;
+  --danger-soft: rgba(255, 110, 110, 0.14);
+  --success: #63db9d;
+  --success-soft: rgba(99, 219, 157, 0.14);
+  --shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-manrope), sans-serif;
+  background:
+    radial-gradient(circle at 15% -10%, rgba(92, 194, 255, 0.24), transparent 38%),
+    radial-gradient(circle at 90% 0%, rgba(99, 219, 157, 0.16), transparent 30%),
+    linear-gradient(180deg, #0b1016 0%, #0c1117 100%);
+  color: var(--text-primary);
+}
+
+code,
+th {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.page {
+  position: relative;
+  width: min(1180px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 2.25rem 0 3rem;
+}
+
+.backdropGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(92, 194, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 40% 80%, rgba(99, 219, 157, 0.06), transparent 30%);
+  opacity: 0.85;
+}
+
+.hero,
+.statsGrid,
+.mainGrid {
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.2rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.45rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+h1 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  margin: 0;
+}
+
+.heroSub {
+  color: var(--text-secondary);
+  margin: 0.6rem 0 0.3rem;
+}
+
+.apiInfo {
+  margin: 0.45rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.apiInfo code {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 0.15rem 0.45rem;
+}
+
+.healthWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: rgba(18, 28, 39, 0.85);
+}
+
+.healthDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.healthUp {
+  background: var(--success);
+  box-shadow: 0 0 0 6px rgba(99, 219, 157, 0.16);
+}
+
+.healthDown {
+  background: var(--danger);
+  box-shadow: 0 0 0 6px rgba(255, 110, 110, 0.16);
+}
+
+.healthText {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.statCard {
+  background: linear-gradient(180deg, rgba(19, 31, 43, 0.96), rgba(15, 25, 35, 0.96));
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  box-shadow: var(--shadow);
+}
+
+.statCardSuspicious {
+  border-color: rgba(255, 110, 110, 0.45);
+}
+
+.statCardBenign {
+  border-color: rgba(99, 219, 157, 0.45);
+}
+
+.statLabel {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+}
+
+.statValue {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.leftColumn {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(19, 30, 42, 0.94), rgba(12, 20, 30, 0.94));
+  box-shadow: var(--shadow);
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.panelHeader h2 {
+  margin: 0;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.07rem;
+}
+
+.panelHeader p {
+  margin: 0.28rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+}
+
+.panelError {
+  margin: 0 0 0.75rem;
+  color: var(--danger);
+  font-size: 0.88rem;
+}
+
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.eventsTable {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.eventsTable th,
+.eventsTable td {
+  padding: 0.63rem 0.52rem;
+  border-bottom: 1px solid rgba(166, 184, 207, 0.16);
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.eventsTable th {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.71rem;
+}
+
+.eventsTable tbody tr {
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+.eventsTable tbody tr:hover {
+  background: rgba(92, 194, 255, 0.07);
+}
+
+.selectedRow {
+  background: rgba(92, 194, 255, 0.14);
+}
+
+.pathCell {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emptyState {
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.emptyStateBlock {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.detailList {
+  margin: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.detailRow {
+  border: 1px solid rgba(166, 184, 207, 0.18);
+  border-radius: 10px;
+  background: rgba(13, 20, 29, 0.86);
+  padding: 0.65rem 0.72rem;
+}
+
+.detailRow dt {
+  margin: 0 0 0.3rem;
+  color: var(--text-secondary);
+  font-size: 0.79rem;
+}
+
+.detailRow dd {
+  margin: 0;
+  font-size: 0.88rem;
+  word-break: break-word;
+}
+
+.scanForm {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.scanForm label {
+  display: grid;
+  gap: 0.32rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.scanForm input,
+.scanForm select,
+.scanForm textarea {
+  width: 100%;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: rgba(10, 17, 26, 0.9);
+  color: var(--text-primary);
+  padding: 0.58rem 0.7rem;
+  font: inherit;
+}
+
+.scanForm textarea {
+  resize: vertical;
+}
+
+.scanForm input:focus,
+.scanForm select:focus,
+.scanForm textarea:focus {
+  outline: 2px solid rgba(92, 194, 255, 0.3);
+  border-color: var(--accent);
+}
+
+.scanForm button {
+  appearance: none;
+  border: 1px solid rgba(92, 194, 255, 0.7);
+  border-radius: 11px;
+  padding: 0.65rem 0.84rem;
+  background: linear-gradient(180deg, rgba(92, 194, 255, 0.28), rgba(56, 140, 194, 0.24));
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    transform 0.14s ease,
+    box-shadow 0.14s ease;
+}
+
+.scanForm button:hover:enabled {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(20, 44, 60, 0.4);
+}
+
+.scanForm button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.scanResult {
+  margin-top: 0.9rem;
+  border-top: 1px solid rgba(166, 184, 207, 0.2);
+  padding-top: 0.85rem;
+}
+
+.scanResultVerdict {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.58rem 0.65rem;
+  border: 1px solid rgba(166, 184, 207, 0.22);
+  border-radius: 10px;
+  background: rgba(11, 17, 26, 0.85);
+  margin-bottom: 0.8rem;
+}
+
+.scanResultVerdict span {
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+}
+
+.scanResult dl {
+  margin: 0;
+  display: grid;
+  gap: 0.58rem;
+}
+
+.resultRow {
+  background: rgba(11, 17, 25, 0.84);
+  border: 1px solid rgba(166, 184, 207, 0.18);
+  border-radius: 9px;
+  padding: 0.55rem 0.65rem;
+}
+
+.resultRow dt {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  margin-bottom: 0.24rem;
+}
+
+.resultRow dd {
+  margin: 0;
+  font-size: 0.87rem;
+  word-break: break-word;
+}
+
+.verdictBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.23rem 0.53rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.72rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.verdictSuspicious {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-color: rgba(255, 110, 110, 0.45);
+}
+
+.verdictBenign {
+  color: var(--success);
+  background: var(--success-soft);
+  border-color: rgba(99, 219, 157, 0.45);
+}
+
+.verdictUnknown {
+  color: var(--text-secondary);
+  border-color: rgba(166, 184, 207, 0.3);
+  background: rgba(166, 184, 207, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .page {
+    width: min(1180px, 100% - 1.2rem);
+    padding-top: 1.3rem;
+  }
+
+  .panel {
+    padding: 0.85rem;
+  }
+}
