@@ -3,11 +3,14 @@ import requests
 import os
 import json
 from datetime import datetime
+from flask import Flask, request, Response, jsonify
+from flask_cors import CORS
 
 from preprocess import serialize_request
 from scanner import WAFScanner
 
 app = Flask(__name__)
+CORS(app)
 
 TARGET = "http://localhost:3000"
 LOG_DIR = "../data"
@@ -59,6 +62,15 @@ def health():
 def scan_only():
     payload = request.get_json(force=True)
 
+    raw_record = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "method": payload["method"],
+        "path": payload["path"],
+        "query": payload.get("query", ""),
+        "headers": payload.get("headers", {}),
+        "body": payload.get("body", ""),
+    }
+
     serialized = serialize_request(
         method=payload["method"],
         path=payload["path"],
@@ -74,6 +86,7 @@ def scan_only():
         })
 
     result = scanner.score_serialized(serialized)
+    log_scored_request(raw_record, result)
     return jsonify(result)
 
 @app.route("/events", methods=["GET"])
